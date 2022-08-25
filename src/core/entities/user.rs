@@ -17,13 +17,8 @@ pub struct UserEntity{
 }
 
 
-
-
-
-
 impl UserEntity{
-
-    fn is_email_valid(email:&str)->bool{
+    pub fn is_email_valid(email:&str)->bool{
         if email.len() == 0{
             return false
         }
@@ -39,12 +34,13 @@ impl UserEntity{
         true
     }
 
-    fn is_name_valid(name:&str)->bool{
+    pub fn is_name_valid(name:&str)->bool{
         if name.len() < 4 || name.len() >100{
             return false;
         };
         true
     }
+
     pub fn new(user:UserEntity) -> Result<UserEntity,&'static str>{
         let email_validate = UserEntity::is_email_valid(&user.email);
         if !email_validate{
@@ -58,6 +54,5 @@ impl UserEntity{
 
         return Ok(user);
     }
-
 
 }
